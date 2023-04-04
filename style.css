@@ -1,0 +1,38 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: #eef9bf;
+    padding: 40px 100px;
+}
+.title{
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 66px;
+    letter-spacing: -0.004em;
+    text-align: center;
+    margin-bottom: 45px;
+
+    color: #75B79E;
+}
+.cards{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.cards img{
+    width: 100px;
+    height: 100px;
+    background-color: inherit;
+}
+.card{
+    width: 117px;
+    height: 146px;
+    padding: 24px 2px 22px 10px;
+
+    background: #A7E9AF;
+    border: 1px solid #99CEA8;
+    border-radius: 5px;
+}
