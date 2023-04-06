@@ -3,6 +3,8 @@ let cards = document.querySelector(".cards");
 let gifs = ["/images/bobrossparrot.gif", "/images/explodyparrot.gif", "/images/fiestaparrot.gif", "/images/metalparrot.gif", "/images/revertitparrot.gif", "/images/tripletsparrot.gif", "/images/unicornparrot.gif"];
 let gifsAleatorio = [];
 let jogadas = 0;
+let tempo = 0;
+let pararIntervalo = 0;
 window.onload = numberCards();
 function numberCards(){
     numCards = Number(prompt("quantidade de cartas para jogar"));
@@ -21,6 +23,7 @@ function distribuirCartas(){
     for(let i = 0; i < numCards; i++){
         cards.innerHTML += `<div class="card semPar" onclick ="virarCarta(this)"><div class ="front-face face"><img src="/images/back.png"></div><div class ="back-face face"><img src=${gifsAleatorio[i]}></div></div>`;
     }
+    pararIntervalo = setInterval(cronometro,1000);
 }
 function randomizar(){
     return Math.random() - 0.5;
@@ -49,9 +52,7 @@ function virarCarta(carta) {
                 setTimeout(fimDoJogo,50);
             }
         }
-    }
-    console.log(document.querySelector(".semPar"));
-    
+    }   
 }
 function desvirarCartas(){
     document.querySelector(".selecionado .front-face").classList.toggle("front");
@@ -63,5 +64,10 @@ function desvirarCartas(){
     document.querySelector(".selecionado").classList.remove("selecionado");
 }
 function fimDoJogo(){
-    alert(`Você ganhou em ${jogadas} jogadas!`);
+    clearInterval(pararIntervalo);
+    alert(`Você ganhou em ${jogadas} jogadas! A duração do jogo foi de ${tempo} segundos!`);
+}
+function cronometro(){
+    tempo++;
+    document.querySelector(".cronometro").innerHTML = tempo;
 }
