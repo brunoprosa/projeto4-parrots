@@ -66,9 +66,9 @@ function desvirarCartas(){
 function fimDoJogo(){
     clearInterval(pararIntervalo);
     alert(`Você ganhou em ${jogadas} jogadas! A duração do jogo foi de ${tempo} segundos!`);
-    let reiniciar = prompt("Deseja reiniciar?");
+    let reiniciar = prompt("Você gostaria de reiniciar a partida? (sim ou não)");
     while (reiniciar !== 'sim' && reiniciar !== 'não'){
-        reiniciar = prompt("Desejs reiniciar? sim ou não");
+        reiniciar = prompt("Você gostaria de reiniciar a partida? (sim ou não)");
     }
     if (reiniciar === 'sim'){
         reset();
