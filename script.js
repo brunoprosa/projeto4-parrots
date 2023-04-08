@@ -21,7 +21,7 @@ function distribuirCartas(){
     }
     gifsAleatorio.sort(randomizar);
     for(let i = 0; i < numCards; i++){
-        cards.innerHTML += `<div class="card semPar" onclick ="virarCarta(this)"><div class ="front-face face"><img src="/images/back.png"></div><div class ="back-face face"><img src=${gifsAleatorio[i]}></div></div>`;
+        cards.innerHTML += `<div class="card semPar" data-test="card" onclick ="virarCarta(this)"><div class ="front-face face"><img data-test="face-down-image" src="/images/back.png"></div><div class ="back-face face"><img data-test="face-up-image" src=${gifsAleatorio[i]}></div></div>`;
     }
     pararIntervalo = setInterval(cronometro,1000);
 }
@@ -66,8 +66,22 @@ function desvirarCartas(){
 function fimDoJogo(){
     clearInterval(pararIntervalo);
     alert(`Você ganhou em ${jogadas} jogadas! A duração do jogo foi de ${tempo} segundos!`);
+    let reiniciar = prompt("Deseja reiniciar?");
+    while (reiniciar !== 'sim' && reiniciar !== 'não'){
+        reiniciar = prompt("Desejs reiniciar? sim ou não");
+    }
+    if (reiniciar === 'sim'){
+        reset();
+    }
 }
 function cronometro(){
     tempo++;
     document.querySelector(".cronometro").innerHTML = tempo;
+}
+function reset(){
+    tempo = 0;
+    jogadas = 0;
+    cards.innerHTML = '';
+    gifsAleatorio = [];
+    numberCards();
 }
