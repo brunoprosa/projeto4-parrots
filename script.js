@@ -29,6 +29,9 @@ function randomizar(){
     return Math.random() - 0.5;
 }
 function virarCarta(carta) {
+    if (carta.classList.contains("selecionado") || !(carta.classList.contains("semPar"))){
+        return
+    }
     let cartaSelecionadaAnt = document.querySelector(".selecionado");
 
     const frente = carta.querySelector(".front-face");
